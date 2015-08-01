@@ -1,6 +1,7 @@
 require 'spec_helper'
+require_relative 'solr_enron'
 
-describe Searchr::Solr do
+describe Searchr::SolrEnron do
   it 'should have a uri' do
     expect(subject.uri.class).to be(URI::HTTP)
   end
