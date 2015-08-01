@@ -1,4 +1,3 @@
-#require 'addressable/uri'
 require 'net/http'
 
 module Searchr
@@ -9,10 +8,14 @@ module Searchr
       self.uri = URI(uri)
     end
 
+    def search
+      Result.new
+    end
+
     protected
 
     def default_solr_uri
-      'http://localhost:8983/solr/enron/select'
+      'http://localhost:8983/solr/collection1/select'
     end
   end
 end
