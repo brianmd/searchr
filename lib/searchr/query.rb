@@ -8,6 +8,10 @@ module Searchr
       result_with http_response
     end
 
+    def result_with
+      subclass_responsibility
+    end
+
     def http_response
       Net::HTTP.get_response url
     end

@@ -2,7 +2,6 @@ require 'net/http'
 require 'json'
 
 require "searchr/version"
-require 'searchr/solr'
 require 'searchr/query'
 require 'searchr/solr_query'
 require 'searchr/result'
