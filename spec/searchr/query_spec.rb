@@ -26,11 +26,19 @@ describe Searchr::EnronQuery do
     expect(subject.url.to_s).to match(/edismax/)
   end
 
-  it 'should get raw results' do
-    results = subject.raw_results
+  it 'should get raw result' do
+    results = subject.http_response
     expect(results.code).to eq('200')
     expect(results.body).to match(/"response"/)
     expect(results.body).to match(/"numFound"/)
     expect(results.body).to match(/"docs"/)
+  end
+
+  it 'should get solr result' do
+    results = subject.search
+    expect(results.code).to eq(200)
+    expect(results.body_str).to match(/"response"/)
+    expect(results.body_str).to match(/"numFound"/)
+    expect(results.body_str).to match(/"docs"/)
   end
 end

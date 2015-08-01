@@ -4,6 +4,14 @@ module Searchr
   class Query
     attr_writer :query, :fields_to_query, :start_row, :num_rows
 
+    def search
+      result_with http_response
+    end
+
+    def http_response
+      Net::HTTP.get_response url
+    end
+
     def query
       @query ||= default_query
     end
@@ -42,10 +50,6 @@ module Searchr
 
     def query_parameters
       subclass_responsibility
-    end
-
-    def raw_results
-      Net::HTTP.get_response url
     end
 
     def url

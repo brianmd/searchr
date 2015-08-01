@@ -1,5 +1,9 @@
 module Searchr
   class SolrQuery < Query
+    def result_with(http_response)
+      SolrResult.new http_response
+    end
+
     def query_parameters
       {
           start: start_row,
