@@ -1,7 +1,7 @@
 module Searchr
   class SolrQuery < Query
-    def result_with(http_response)
-      SolrResult.new http_response
+    def result_class
+      SolrResult
     end
 
     def query_parameters

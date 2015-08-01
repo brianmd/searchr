@@ -5,10 +5,10 @@ module Searchr
     attr_writer :query, :fields_to_query, :start_row, :num_rows
 
     def search
-      result_with http_response
+      result_class.new self, http_response
     end
 
-    def result_with
+    def result_class
       subclass_responsibility
     end
 

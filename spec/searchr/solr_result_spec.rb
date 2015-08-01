@@ -18,6 +18,10 @@ describe Searchr::SolrResult do
     expect(@result.num_matches).to be >5000
   end
 
+  it 'should have 10 documents' do
+    expect(@result.documents.size).to eq(10)
+  end
+
   it 'should have explanations' do
     expect(@result.explanations.size).to be >3
   end

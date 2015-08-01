@@ -1,6 +1,9 @@
 module Searchr
   class Result
-    def initialize(http_response)
+    attr_reader :query
+
+    def initialize(query, http_response)
+      @query = query
       @http_response = http_response
       raise 'Http response for search did not succeed' if code!=200
     end

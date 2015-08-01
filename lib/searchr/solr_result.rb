@@ -1,8 +1,17 @@
 module Searchr
   class SolrResult < Result
+    def documents
+      @documents ||= body['response']['docs']
+    end
+
     def num_matches
       @num_found ||= body['response']['numFound']
     end
+
+    def explain
+      body['debug']['explain']
+    end
+
 
     def explanations
       @explanation = extract_explanations
@@ -16,10 +25,6 @@ module Searchr
         matches[key] = val.split("\n")
       end
       matches
-    end
-
-    def explain
-      body['debug']['explain']
     end
   end
 end
