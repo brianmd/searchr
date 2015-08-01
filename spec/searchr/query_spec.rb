@@ -16,4 +16,9 @@ describe Searchr::EnronQuery do
   it 'should have fields to query' do
     expect(subject.fields_to_query).to match(/subject/)
   end
+
+  it 'should have good query parameters' do
+    params = subject.query_parameters
+    expect(params[:rows]).to eq(10)
+  end
 end

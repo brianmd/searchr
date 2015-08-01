@@ -1,5 +1,5 @@
 module Searchr
-  class EnronQuery < Query
+  class EnronQuery < SolrQuery
 
     protected
 
