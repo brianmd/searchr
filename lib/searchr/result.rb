@@ -6,7 +6,7 @@ module Searchr
     end
 
     def body
-      @body ||= JSON.parse(http_response.body)
+      @body ||= JSON.parse(@http_response.body)
     end
 
     def code
