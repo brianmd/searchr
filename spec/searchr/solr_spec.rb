@@ -1,5 +1,4 @@
 require 'spec_helper'
-require_relative 'solr_enron'
 
 describe Searchr::SolrEnron do
   it 'should have a uri' do

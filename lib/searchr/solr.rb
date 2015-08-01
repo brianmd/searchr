@@ -1,5 +1,3 @@
-require 'net/http'
-
 module Searchr
   class Solr
     attr_accessor :uri
@@ -15,7 +13,7 @@ module Searchr
     protected
 
     def default_solr_uri
-      self.subclass_responsibility
+      subclass_responsibility
     end
   end
 end
