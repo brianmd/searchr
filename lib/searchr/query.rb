@@ -44,6 +44,10 @@ module Searchr
       subclass_responsibility
     end
 
+    def raw_results
+      Net::HTTP.get_response url
+    end
+
     def url
       uri = URI(base_query_url)
 

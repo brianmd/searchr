@@ -25,4 +25,12 @@ describe Searchr::EnronQuery do
   it 'should create a reasonable url' do
     expect(subject.url.to_s).to match(/edismax/)
   end
+
+  it 'should get raw results' do
+    results = subject.raw_results
+    expect(results.code).to eq('200')
+    expect(results.body).to match(/"response"/)
+    expect(results.body).to match(/"numFound"/)
+    expect(results.body).to match(/"docs"/)
+  end
 end
