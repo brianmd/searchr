@@ -21,4 +21,8 @@ describe Searchr::EnronQuery do
     params = subject.query_parameters
     expect(params[:rows]).to eq(10)
   end
+
+  it 'should create a reasonable url' do
+    expect(subject.url.to_s).to match(/edismax/)
+  end
 end

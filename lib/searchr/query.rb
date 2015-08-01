@@ -1,3 +1,5 @@
+require 'addressable/uri'
+
 module Searchr
   class Query
     attr_writer :query, :fields_to_query, :start_row, :num_rows
@@ -8,6 +10,10 @@ module Searchr
 
     def query_type
       @query_type ||= default_query_type
+    end
+
+    def base_query_url
+      @base_query_url ||= default_base_query_url
     end
 
     def fields_to_query
@@ -36,6 +42,16 @@ module Searchr
 
     def query_parameters
       subclass_responsibility
+    end
+
+    def url
+      uri = URI(base_query_url)
+
+      query_uri = Addressable::URI.new
+      query_uri.query_values = query_parameters
+
+      uri.query = query_uri.query
+      uri
     end
 
     protected
