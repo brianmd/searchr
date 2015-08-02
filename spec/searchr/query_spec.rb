@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Searchr::EnronQuery do
   it 'should have start row' do
-    expect(subject.start_row).to eq(0)
+    expect(subject.start_row).to eq(1)
   end
 
   it 'should have num rows' do

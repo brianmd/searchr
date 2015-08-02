@@ -13,7 +13,7 @@ module Searchr
     end
 
     def start_row
-      @start_row ||= body['response']['start'] + 1
+      @start_row ||= body['response']['start']
     end
 
     def end_row

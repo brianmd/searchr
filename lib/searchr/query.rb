@@ -51,13 +51,13 @@ module Searchr
     end
 
     def start_row
-      @start_row ||= 0
+      @start_row ||= 1
     end
 
     def start_row=(num)
       num_as_int = Integer(num)
-      raise "start_row must be a positive integer (#{num})" if num_as_int < 0
-      @start_row = num_as_int
+      raise "start_row must be a positive integer (#{num})" if num_as_int < 1
+      @start_row = num_as_int - 1
     end
 
     def num_rows
@@ -68,6 +68,10 @@ module Searchr
       num_as_int = Integer(num)
       raise "num_rows must be a positive integer (#{num})" if num_as_int < 0
       @num_rows = num_as_int
+    end
+
+    def end_row
+      start_row + num_rows - 1
     end
 
     def indent?

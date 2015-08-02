@@ -6,7 +6,7 @@ module Searchr
 
     def query_parameters
       {
-          start: start_row,
+          start: start_row-1,
           rows: num_rows,
           q: query,
           qf: fields_to_query,
