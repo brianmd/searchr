@@ -53,18 +53,23 @@ describe Searchr::ExplanationParser do
     expect(explanation.flattened).to eq(parser.top_node.simple_array)
   end
 
-  it 'string' do
-    str = parser.top_node.simple_string
-    expect(str).to eq(3)
-  end
+  xcontext 'show parsed values' do    # these cause errors, thereby showing the values
+    it 'string' do
+      # str = parser.top_node.simple_string
+      str = explanation.str
+      expect(str).to eq(3)
+    end
 
-  it 'nested' do
-    nested = parser.top_node.simple_json
-    expect(nested).to eq(3)
-  end
+    it 'nested' do
+      # nested = parser.top_node.simple_json
+      nested = explanation.nested
+      expect(nested).to eq(3)
+    end
 
-  it 'array' do
-    flattened = parser.top_node.simple_array
-    expect(flattened).to eq(3)
+    it 'array' do
+      # flattened = parser.top_node.simple_array
+      flattened = explanation.flattened
+      expect(flattened).to eq(3)
+    end
   end
 end
