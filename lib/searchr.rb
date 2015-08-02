@@ -1,12 +1,8 @@
 require 'net/http'
 require 'json'
 
-require "searchr/version"
-require 'searchr/query'
-require 'searchr/solr_query'
-require 'searchr/result'
-require 'searchr/solr_result'
-require 'searchr/explanation_parser'
+require 'requirer'
+Requirer.require_dir_tree 'searchr'
 
 module Searchr
   # Your code goes here...
