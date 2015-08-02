@@ -2,7 +2,7 @@ require 'addressable/uri'
 
 module Searchr
   class Query
-    attr_writer :query, :fields_to_query, :start_row, :num_rows
+    attr_writer :query, :fields_to_query, :fields_to_return, :start_row, :num_rows
 
     def search
       result_class.new self, http_response
@@ -30,6 +30,10 @@ module Searchr
 
     def fields_to_query
       @fields_to_query ||= default_fields_to_query
+    end
+
+    def fields_to_return
+      @fields_to_return ||= default_fields_to_return
     end
 
     def start_row
@@ -77,6 +81,10 @@ module Searchr
     end
 
     def default_fields_to_query
+      subclass_responsibility
+    end
+
+    def default_fields_to_return
       subclass_responsibility
     end
 

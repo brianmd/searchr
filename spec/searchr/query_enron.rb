@@ -21,5 +21,9 @@ to
 body^20
 subject^20'
     end
+
+    def default_fields_to_return
+      [:id, :from, :to, :subject, :date]
+    end
   end
 end
