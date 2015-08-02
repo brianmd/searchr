@@ -8,6 +8,10 @@ module Searchr
       documents.size
     end
 
+    def num_documents_requested
+      query.num_rows
+    end
+
     def start_row
       @start_row ||= body['response']['start'] + 1
     end
