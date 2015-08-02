@@ -2,7 +2,7 @@ require 'addressable/uri'
 
 module Searchr
   class Query
-    attr_writer :query, :fields_to_query, :fields_to_return, :start_row, :num_rows
+    attr_writer :query, :fields_to_query
 
     def search
       result_class.new self, http_response
@@ -34,14 +34,35 @@ module Searchr
 
     def fields_to_return
       @fields_to_return ||= default_fields_to_return
+      @fields_to_return.gsub(/\s+/m, ' ').strip.split(" ")
+    end
+
+    def fields_to_return=(array_or_string)
+      @fields_to_return = if array_or_string.class==String
+                            array_or_string
+                          else
+                            array_or_string.join(' ')
+                          end
     end
 
     def start_row
       @start_row ||= 0
     end
 
+    def start_row=(num)
+      num_as_int = Integer(num)
+      raise "start_row must be a positive integer (#{num})" if num_as_int < 0
+      @start_row = num_as_int
+    end
+
     def num_rows
       @num_rows ||= default_num_rows
+    end
+
+    def num_rows=(num)
+      num_as_int = Integer(num)
+      raise "num_rows must be a positive integer (#{num})" if num_as_int < 0
+      @num_rows = num_as_int
     end
 
     def indent?
