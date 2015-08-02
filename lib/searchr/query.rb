@@ -8,7 +8,12 @@ module Searchr
       result_class.new self, http_response
     end
 
+    # There are more subclass responsibility methods in the protected section.
     def result_class
+      subclass_responsibility
+    end
+
+    def query_parameters
       subclass_responsibility
     end
 
@@ -77,10 +82,6 @@ module Searchr
       @return_type ||= default_return_type
     end
 
-    def query_parameters
-      subclass_responsibility
-    end
-
     def url
       uri = URI(base_query_url)
 
@@ -119,7 +120,7 @@ module Searchr
     end
 
     def default_debug_query?
-      # true required to diagnose result weights
+      # true required to retrieve result weights
       true
     end
 
