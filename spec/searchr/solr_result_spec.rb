@@ -14,6 +14,10 @@ describe Searchr::SolrResult do
     expect(@result.code).to eq(200)
   end
 
+  it 'should know number of rows' do
+    expect(@result.num_rows).to eq(10)
+  end
+
   it 'should have a lot of search results' do
     expect(@result.num_matches).to be >5000
   end
@@ -23,11 +27,11 @@ describe Searchr::SolrResult do
   end
 
   it 'should have explanations' do
-    expect(@result.explanations.size).to be >3
+    expect(@result.explanations.keys.size).to be >3
   end
 
   context 'first explanation' do
-    let(:explanation) { @result.explanations.first }
+    let(:explanation) { @result.explanations.first[1] }
 
     it 'should have two elements' do
       expect(explanation.size).to eq(2)
