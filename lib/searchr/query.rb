@@ -39,7 +39,7 @@ module Searchr
 
     def fields_to_return
       @fields_to_return ||= default_fields_to_return
-      @fields_to_return.gsub(/\s+/m, ' ').strip.split(" ")
+      @fields_to_return.split(/\W+/)
     end
 
     def fields_to_return=(array_or_string)
@@ -57,7 +57,7 @@ module Searchr
     def start_row=(num)
       num_as_int = Integer(num)
       raise "start_row must be a positive integer (#{num})" if num_as_int < 1
-      @start_row = num_as_int - 1
+      @start_row = num_as_int
     end
 
     def num_rows
